@@ -12,10 +12,11 @@ namespace Task1_1.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly Temp _temp;
-        public ValuesController(Temp temp)
+        private readonly InputData _inputdata;
+        public ValuesController(Temp temp,InputData inputData)
         {
-
             _temp = temp;
+            _inputdata = inputData;
         }
         [HttpGet]
         public IActionResult Get()
@@ -27,7 +28,7 @@ namespace Task1_1.Controllers
         public IActionResult Create([FromQuery] int input, [FromQuery] int year, [FromQuery] int month, [FromQuery] int day)
         {
             DateTime date = new DateTime(year, month, day);
-            var item = new Temp() { TemperatureC = input, Date = date };
+            var item = new InputData() { TemperatureC = input, Date = date };
             _temp.tmp.Add(item);
 
             return Ok();
@@ -36,7 +37,7 @@ namespace Task1_1.Controllers
         public IActionResult Update([FromQuery] int year, [FromQuery] int month, [FromQuery] int day, [FromQuery] int input)
         {
             DateTime date = new DateTime(year, month, day);
-            foreach (Temp a in _temp.tmp)
+            foreach (InputData a in _temp.tmp)
             {
                 if (date == a.Date)
                 {
@@ -49,7 +50,7 @@ namespace Task1_1.Controllers
         public IActionResult Delete([FromQuery] int year, [FromQuery] int month, [FromQuery] int day)
         {
             DateTime date = new DateTime(year, month, day);
-            foreach (Temp a in _temp.tmp)
+            foreach (InputData a in _temp.tmp)
             {
                 if (date == a.Date)
                 {

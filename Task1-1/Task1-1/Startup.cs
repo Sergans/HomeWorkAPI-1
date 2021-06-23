@@ -27,6 +27,7 @@ namespace Task1_1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<Temp>();
+            services.AddSingleton<InputData>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

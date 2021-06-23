@@ -5,15 +5,9 @@ using System.Threading.Tasks;
 
 namespace Task1_1
 {
-    public class Temp
+    public class InputData
     {
-
-        public List<InputData> tmp = new List<InputData>();
-
-        public Temp()
-        {
-
-
-        }
+        public int TemperatureC { get; set; }
+        public DateTime Date { get; set; }
     }
 }
